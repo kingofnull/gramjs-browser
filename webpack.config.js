@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
+module.exports =(env, argv) =>( {
   target: ["web"],
   entry: path.resolve(__dirname, "gramjs/index.js"),
   module: {
@@ -34,7 +34,7 @@ module.exports = {
       constants: false,
     },
   },
-  mode: "development",
+mode: argv.mode || "development",
   plugins: [
     new webpack.ProvidePlugin({
       Buffer: ["buffer", "Buffer"],
@@ -47,8 +47,8 @@ module.exports = {
   output: {
     library: "gramjs",
     libraryTarget: "umd",
-    auxiliaryComment: "Test Comment",
-    filename: "gramjs.js",
+    auxiliaryComment: "",
+    filename: argv.mode=="production" ? "gramjs.min.js" : "gramjs.js",
     path: path.resolve(__dirname, "browser"),
   },
-};
+});
