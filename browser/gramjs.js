@@ -7,16 +7,12 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 (function webpackUniversalModuleDefinition(root, factory) {
-	//Test Comment
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
-	//Test Comment
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
-	//Test Comment
 	else if(typeof exports === 'object')
 		exports["gramjs"] = factory();
-	//Test Comment
 	else
 		root["gramjs"] = factory();
 })(self, () => {
